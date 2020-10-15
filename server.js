@@ -5,6 +5,7 @@ const path=require('path');
 const app = express()
 const dotenv=require('dotenv');
 const connectDB=require('./config/db');
+const compression=require('compression')
 
 
 dotenv.config({path:"./config/config.env"})
@@ -16,6 +17,9 @@ connectDB();
  
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
+
+//compression middleware
+app.use(compression())
 
 
 //Logging
